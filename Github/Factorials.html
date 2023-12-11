@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title> Trixia Simone Maligad CS 1130 </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com"crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+  <style>
+   body {background-color: #F4D6F8;}
+    </style>
+</head>
+
+
+
+    <body>
+      <link rel="stylesheet" href="factorialsstyle.css">
+      <div class="w3-top">
+        <div class="w3-row w3-padding w3-black">
+          <div class="w3-col s3">
+        <!-- I BELIEVE ITO IYUNG BACKGROUND IMAGE-->
+        <section class="header">
+          <nav>
+            <a href="index.html"><img src="images/cherry.png"> </a>
+            <div class="nav-links" id="navLinks">
+              <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="Homepage.html" class="w3-button w3-block w3-black">HOME</a></li>
+                <li><a href="Conversion.html" class="w3-button w3-block w3-black">CONVERSION </a></li>
+                <li><a href="IncomeCalculator.html" class="w3-button w3-block w3-black">CALCULATOR</a></li>
+                <li><a href="Factorials.html" class="w3-button w3-block w3-black">FACTORIALS</a></li>
+                <li><a href="SimplePayroll.html" class="w3-button w3-block w3-black">SIMPLE PAYROLL</a></li>
+              </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+          </nav>
+        <div>
+        <br> <br> <br> <br> <br> 
+    
+        </div>
+      </section>
+
+<!---------------------- IYUNG FACTORIALS----------------------------->
+<br> <br>
+<h2 style="text-align: center;">Nth Factorial, Sum, and Average </h2>
+    <br>
+    <label for="inputNumber"style="display:block; text-align: center;">Enter a positive integer (n): </label>
+    <input type="number" id="inputNumber" required>
+       <br>
+         <div style="text-align: center;">
+            <button class="hero-btn" onclick="bastaiyungTatlo()">Calculate</button>
+         </div>
+       <br>
+
+       <div id="resultsContainer">
+        <p id="factorialResult">Factorial: <span id="factorialValue"></span></p>
+        <p id="sumResult">Sum: <span id="sumValue"></span></p>
+        <p id="averageResult">Average: <span id="averageValue"></span></p>
+      </div>
+
+<!------------ WORDS ---------------------->
+<section class="course">
+  <h2> How was it computed? </h2>
+  <p> Find out the reason why behind the calculation!</p>
+  <br>
+ <div class="row">
+     <div class="course-col">
+       <h3>Nth Factorial</h3>
+       <p>By using the formula: n! = n*(n -1)!</p>
+       <br>
+     </div>
+     <div class="row">
+       <div class="course-col">
+         <h3> Sum </h3>
+         <p>By adding two or more numbers together</p>
+         <br>
+       </div>
+       <div class="row">
+         <div class="course-col">
+           <h3> Average </h3>
+           <p>By adding everything together then divide it by n</p>
+           <br>
+         </div>
+ </div>
+</section>
+
+<!---------------------------- JAVASCRIPT AREA-------------------------->
+<script>
+  function bastaiyungTatlo() {
+    // variable area
+        var n = parseInt(document.getElementById("inputNumber").value);
+        var factorialNum = 1;
+        var i = 1;
+        var sum = 0;
+        var j = 1;
+        var average = 0;
+
+    // while loop gamit to hanap the nth factorial
+        while (i <= n) {
+            factorialNum *= i;
+            i++; }
+
+    // use a do while loop
+        do {
+            sum += j;
+            j++;
+        } while (j <= n);
+
+   // use a for loop
+        for (var k = 1; k <= n; k++) {
+            average += k;
+        }
+        average /= n;
+
+        // Display the results
+        document.getElementById("factorialResult").innerHTML = "Factorial: " + factorialNum;
+        document.getElementById("sumResult").innerHTML = "Sum: " + sum;
+        document.getElementById("averageResult").innerHTML = "Average: " + average.toFixed(2); }
+</script>
+
+
+</body>
+</html> 
