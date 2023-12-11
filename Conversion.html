@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title> Conversion </title>
+  <link rel="stylesheet" type="text/css" href="conversionpic.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com"crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css">
+  <style>
+   body {background-color: #F4D6F8;}
+
+   .conversion-options {
+      display: none; }
+
+    </style>
+</head>
+
+<!-------- BODY---------------------------->
+    <body>
+      <link rel="stylesheet" href="conversionpic.css">
+      <div class="w3-top">
+        <div class="w3-row w3-padding w3-black">
+          <div class="w3-col s3">
+        <section class="header">
+          <nav>
+            <a href="index.html"><img src="images/cherry.png"> </a>
+            <div class="nav-links" id="navLinks">
+              <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="Homepage.html" class="w3-button w3-block w3-black">HOME</a></li>
+                <li><a href="Conversion.html" class="w3-button w3-block w3-black">CONVERSION </a></li>
+                <li><a href="IncomeCalculator.html" class="w3-button w3-block w3-black">CALCULATOR</a></li>
+                <li><a href="Factorials.html" class="w3-button w3-block w3-black">FACTORIALS</a></li>
+                <li><a href="SimplePayroll.html" class="w3-button w3-block w3-black">SIMPLE PAYROLL</a></li>
+              </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+          </nav>
+      </section>
+
+<!------------------------------ BUTTON BANDA NA NAGA CHANGE ---------------------------->
+<div class="form-box">
+  <div class="button-box">
+    <div id="btn"></div>
+    <button type="button" class="toggle-btn" onclick="leftClick()">Temperature</button>
+    <button type="button" class="toggle-btn" onclick="rightClick()">Height</button>
+  </div>
+</div>
+<script src="conversionjss.js"></script>
+
+
+<!----------- ITO BANDA -------------->
+
+<div id="temperatureOptions" class="conversion-options">
+  <label for="temperatureConversionType" style="display:block; text-align: center;">Select Conversion Type:</label>
+  <select id="temperatureConversionType" onchange="resetResult()">
+    <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+    <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+  </select>
+</div>
+
+<div id="lengthOptions" class="conversion-options">
+  <label for="lengthConversionType" style="display:block; text-align: center;">Select Conversion Type:</label>
+  <select id="lengthConversionType" onchange="resetResult()">
+    <option value="metersToFeet">Meters to Feet</option>
+    <option value="feetToMeters">Feet to Meters</option>
+  </select>
+</div>
+
+<br>
+
+<label for="inputValue" style="display:block; text-align: center;">Enter Value:</label>
+<input type="number" id="inputValue" placeholder="Enter value" oninput="convertUnits()">
+
+<!--------SUBMIT BUTTON THIGNY???-->
+<br><br>
+<div class="calculate-container">
+  <br><p> Please use the light green button above first</p><br>
+  <div id="result">Value</div>
+</div>
+    <br><br>
+</div>
+</div>
+
+
+<!---------------- JAVASCRIPT AREA -------------->
+<script>
+  function resetResult() {
+    document.getElementById('result').innerHTML = 'Converted value will be displayed here.';
+  }
+
+  function leftClick() {
+    document.getElementById('temperatureOptions').style.display = 'block';
+    document.getElementById('lengthOptions').style.display = 'none';
+    document.getElementById('btn').style.transform = 'translateX(0)';
+    resetResult();
+  }
+
+  function rightClick() {
+    document.getElementById('temperatureOptions').style.display = 'none';
+    document.getElementById('lengthOptions').style.display = 'block';
+    document.getElementById('btn').style.transform = 'translateX(100%)';
+    resetResult();
+  }
+
+  function convertUnits() {
+    var inputValue = document.getElementById('inputValue').value;
+    var result;
+
+    if (document.getElementById('temperatureOptions').style.display === 'block') {
+      var temperatureConversionType = document.getElementById('temperatureConversionType').value;
+
+      switch (temperatureConversionType) {
+        case 'fahrenheitToCelsius':
+          result = (inputValue - 32) * 5/9;
+          break;
+        case 'celsiusToFahrenheit':
+          result = (inputValue * 9/5) + 32;
+          break;
+        default:
+          result = 'Invalid conversion type';
+      }
+    } else if (document.getElementById('lengthOptions').style.display === 'block') {
+      var lengthConversionType = document.getElementById('lengthConversionType').value;
+
+      switch (lengthConversionType) {
+        case 'metersToFeet':
+          result = inputValue * 3.28084;
+          break;
+        case 'feetToMeters':
+          result = inputValue / 3.28084;
+          break;
+        default:
+          result = 'Invalid conversion type';
+      }
+    } else {
+      result = 'Invalid conversion type';
+    }
+
+    document.getElementById('result').innerHTML = 'Converted value: ' + result.toFixed(2);
+ }
+</script>
+</body>
+
+</html> 
